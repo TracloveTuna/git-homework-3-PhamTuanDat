@@ -1,6 +1,4 @@
-========================================
-         EXERCISE 3 - COMMANDS
-========================================
+
 
 PART A
 # 1. Make sure you are in home directory, then create a directory ex3
@@ -45,7 +43,11 @@ rm dir2/Hi.txt
 # 5. Copy your output when running ls -li command here
 ls -li
 OUTPUT:
-[BẠN HÃY CHẠY LỆNH ls -li TRÊN TERMINAL RỒI COPY KẾT QUẢ TRÊN MÀN HÌNH DÁN ĐÈ VÀO DÒNG NÀY]
+total 0
+ 36310271995906842 -rw-r--r-- 1 HD 197609 0 Sep 17 23:03 Hi-sym
+211669182486506333 drwxr-xr-x 1 HD 197609 0 Sep 17 23:03 dir1/
+ 35747322042377477 drwxr-xr-x 1 HD 197609 0 Sep 17 23:03 dir2/
+
 
 
 PART C
@@ -66,7 +68,7 @@ wc mytext.txt
 
 # 4. List a directory, save via tee to also list them on the screen
 ls -l | tee full_listing.txt
-    
+
 
 PART D
 # 1. Create permissions directory, files, and set octal permissions
