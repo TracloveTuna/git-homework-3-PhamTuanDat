@@ -1,0 +1,93 @@
+========================================
+         EXERCISE 3 - COMMANDS
+========================================
+
+PART A
+# 1. Make sure you are in home directory, then create a directory ex3
+cd ~
+mkdir ex3
+
+# 2. Go into directory ex3
+cd ex3
+
+# 3. Create 2 directories dir1 and dir2
+mkdir dir1 dir2
+
+# 4. Create an empty HelloWorld.txt file, then copy that file to the dir1 directory
+touch HelloWorld.txt
+cp HelloWorld.txt dir1/
+
+# 5. Copy the HelloWorld.txt file to dir1 again, show the overwriting warning
+cp -i HelloWorld.txt dir1/
+
+# 6. Rename HelloWorld.txt to Hi.txt
+mv HelloWorld.txt Hi.txt
+
+# 7. Move that file to dir2
+mv Hi.txt dir2/
+
+
+PART B
+# 1. Create 3 hard links for file Hi.txt in the directories ex3, dir1, dir2 (3 separate commands)
+ln dir2/Hi.txt Hi-hard
+ln dir2/Hi.txt dir1/Hi-hard
+ln dir2/Hi.txt dir2/Hi-hard
+
+# 2. Create a symbolic link for Hi.txt in ex3 directory, name it Hi-sym
+ln -s dir2/Hi.txt Hi-sym
+
+# 3. Remove Hi-hard link in the ex3 directory
+rm Hi-hard
+
+# 4. Remove the file Hi.txt
+rm dir2/Hi.txt
+
+# 5. Copy your output when running ls -li command here
+ls -li
+OUTPUT:
+[BẠN HÃY CHẠY LỆNH ls -li TRÊN TERMINAL RỒI COPY KẾT QUẢ TRÊN MÀN HÌNH DÁN ĐÈ VÀO DÒNG NÀY]
+
+
+PART C
+# 1. List all files in /bin and /usr/bin combined, sort, remove duplicates, count unique names
+ls /bin /usr/bin | sort | uniq | wc -l
+
+# 2. From that sorted list, remove duplicates, find substring "zip"
+ls /bin /usr/bin | sort | uniq | grep "zip"
+
+# 3. Generate text file with at least 30 lines
+seq 1 35 > mytext.txt
+# Print only the first 5 lines
+head -n 5 mytext.txt
+# Print only the last 5 lines
+tail -n 5 mytext.txt
+# Count the total number of lines, words, and bytes
+wc mytext.txt
+
+# 4. List a directory, save via tee to also list them on the screen
+ls -l | tee full_listing.txt
+    
+
+PART D
+# 1. Create permissions directory, files, and set octal permissions
+mkdir permissions
+cd permissions
+touch secret.txt shared.txt public.txt
+
+# secret.txt -> owner read/write (6), no one else (00)
+chmod 600 secret.txt
+
+# shared.txt -> owner and group read/write (66), others read (4)
+chmod 664 shared.txt
+
+# public.txt -> everyone read, write, execute (777)
+chmod 777 public.txt
+
+# 2. Check umask, create a new file, and explain permissions
+umask
+touch test_file.txt
+ls -l test_file.txt
+
+EXPLANATION:
+When a new file is created, the system assigns a default base permission of 666 (rw-rw-rw-). However, the actual permission is determined by subtracting the umask value from this base permission (Base - Umask). 
+For example, if my umask is 0022, the final permission for test_file.txt is 666 - 022 = 644 (rw-r--r--). This means the owner can read/write, while the group and others can only read.
